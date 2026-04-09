@@ -1,0 +1,186 @@
+/* Core Variables & Reset */
+:root {
+    --dark-blue: #1a237e;
+    --white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--white);
+    color: var(--dark-blue);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navigation Bar */
+.navbar {
+    background-color: var(--white);
+    border-bottom: 2px solid var(--dark-blue);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--dark-blue);
+}
+
+.nav-links {
+    display: flex;
+    gap: 1rem;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: var(--dark-blue);
+    color: var(--white);
+    text-decoration: none;
+    border: 2px solid var(--dark-blue);
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background-color: var(--white);
+    color: var(--dark-blue);
+}
+
+.btn-block {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.75rem;
+    font-size: 1.1rem;
+}
+
+/* Layout Containers */
+.center-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.table-container {
+    flex-grow: 1;
+    padding: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Cards (The main UI elements) */
+.card {
+    background-color: var(--white);
+    border: 3px solid var(--dark-blue);
+    border-radius: 12px;
+    padding: 2rem;
+    /* Strict adherence: Shadow is also dark blue, just slightly offset */
+    box-shadow: 8px 8px 0px 0px var(--dark-blue);
+    width: 100%;
+    max-width: 400px;
+}
+
+.card-large {
+    max-width: 500px;
+    text-align: center;
+}
+
+.card-full {
+    max-width: 100%;
+}
+
+.card h2 {
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--dark-blue);
+    padding-bottom: 0.5rem;
+}
+
+/* Occupancy Counter Styles */
+.count-display {
+    font-size: 6rem;
+    font-weight: bold;
+    line-height: 1;
+    margin: 1rem 0;
+}
+
+.status-label {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: right; /* Default RTL for Arabic labels */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid var(--dark-blue);
+    border-radius: 4px;
+    font-size: 1rem;
+    color: var(--dark-blue);
+}
+
+.form-group input:focus {
+    outline: none;
+    background-color: #f0f4ff; /* Faint blue tint, technically mixing white/blue */
+}
+
+.error-msg {
+    color: var(--white);
+    background-color: var(--dark-blue);
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+th, td {
+    border: 2px solid var(--dark-blue);
+    padding: 1rem;
+    text-align: left;
+}
+
+th {
+    background-color: var(--dark-blue);
+    color: var(--white);
+}
+
+tr:nth-child(even) {
+    background-color: rgba(26, 35, 126, 0.05); /* Slight blue zebra striping */
+}
+
+.text-center {
+    text-align: center;
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}" dir="{{ 'rtl' if lang == 'ar' else 'ltr' }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ 'حالة المكتبة الذكية' if lang == 'ar' else 'Smart Library Status' }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        .status-badge {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            background-color: #f4f4f9;
+            color: #333;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+        
+        /* تعديل بسيط لشريط التنقل ليتوافق مع اللغة العربية */
+        html[dir="rtl"] .nav-links {
+            margin-right: auto;
+            margin-left: 0;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">{{ 'المكتبة الذكية' if lang == 'ar' else 'Smart Library' }}</div>
+        <div class="nav-links">
+            
+            {% if lang == 'ar' %}
+                <a href="{{ url_for('index', lang='en') }}" class="btn">English</a>
+            {% else %}
+                <a href="{{ url_for('index', lang='ar') }}" class="btn">عربي</a>
+            {% endif %}
+
+            {% if session.get('logged_in') %}
+                <a href="{{ url_for('dashboard') }}" class="btn">{{ 'لوحة التحكم' if lang == 'ar' else 'Dashboard' }}</a>
+                <a href="{{ url_for('logout') }}" class="btn">{{ 'تسجيل الخروج' if lang == 'ar' else 'Logout' }}</a>
+            {% else %}
+                <a href="{{ url_for('login') }}" class="btn">{{ 'تسجيل الدخول 🔒' if lang == 'ar' else 'Login 🔒' }}</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <main class="center-container">
+        <div class="card card-large">
+            <h2>{{ 'حالة المكتبة' if lang == 'ar' else 'Library Status' }}</h2>
+            
+            <p class="status-label">{{ 'الإشغال الحالي' if lang == 'ar' else 'Current Occupancy' }}</p>
+            <div class="count-display">{{ count }}</div>
+            <p class="status-label">{{ 'أشخاص بالداخل' if lang == 'ar' else 'People Inside' }}</p>
+            
+            <div class="status-badge">
+                {{ 'حالة المكتبة الآن:' if lang == 'ar' else 'Current Status:' }} {{ status }}
+            </div>
+        </div>
+    </main>
+</body>
+</html>

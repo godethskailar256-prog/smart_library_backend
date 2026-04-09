@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Librarian Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">Dashboard</div>
+        <div class="nav-links">
+            <a href="{{ url_for('index') }}" class="btn">View Public Status</a>
+            <a href="{{ url_for('logout') }}" class="btn">Logout</a>
+        </div>
+    </nav>
+
+    <main class="table-container">
+        <div class="card card-full">
+            <h2>Student Entry Logs</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Log ID (Auto)</th>
+                        <th>RFID Card Number</th>
+                        <th>Timestamp of Entry</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for log in logs %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ log.rfid_id }}</td>
+                        <td>{{ log.entry_timestamp.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="3" class="text-center">No student logs found.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+</html>
